@@ -1,0 +1,6 @@
+Emma Forster,Frau,58 Juelicherstrasse,info@avm.de,+495683218597,02.03.1965,14/04/2023,102
+Max Mustermann,Herr,Musterstraße 1,mmuster@example.com,0123456789,01.01.1980,Herr,2023/02/15,103
+Erika Mustermann,Herr,Musterweg 2,emuster@example.com,0987654321,02.02.1990,Frau,2023/02/15,104
+Hans Schmidt,Herr,Schmidtstraße 3,hschmidt@example.com,1122334455,03.03.1975,Herr,2023/02/15,106
+Lisa Meier,Herr,Meierweg 4,lmeier@example.com,5566778899,04.04.1985,Frau,2023/02/15,110
+Peter Müller,Herr,Müllerplatz 5,pmueller@example.com,3344556677,05.05.1995,Herr,2023/02/15,111

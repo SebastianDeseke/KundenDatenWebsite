@@ -1,0 +1,9 @@
+Herr,Sebastian,Deseke,Enterprise Communications GmbH,Rutherfor 111 Avantis,52072,+492161639730,info@enterprise-communications.com,DE56181351681,1,227
+Herr,Haico,Stein,In2Voice b.v,Rutherfor 103 Avantis,RE6185,+31875959875,info@in2voice.com,NL3968569889,2,654
+Herr,Markus,Fueller,OVH GmbH,Stellastraße 56,52062,+49241654430,info@ovh-server.de,DE856321479,1,827
+Herr,Ito,Niejmeyer,Portugal Ltd.,Beachstreet 84,36069,+3512161639730,info@portugal.com,PT56181351681,4,942
+Herr,Daniel,Forstman,Piero GmbH,Roermonderstraße 321,32659,+4936584152,info@piero.com,DE56181351681,1,198
+Herr,Gijs,Beterweik,Beter Online b.v,Galantisstraat 85,RE2365,+31568742899,info@beter-online.com,NL98781351681,2,789
+Herr,Stoyan,Dimov,Disconnect Bulgaria Ltd,Rutherfor 111 Avantis,52072,+35992577364,info@enterprise-communications,BULG561813516mb,4,968
+Herr,Zander,Rosouw,University of Tuks,22 Schmool Street,2017,+27743561314,zander.rosouw@gmail.com,ZA35874138971,4,299
+Frau,Emma,Schwatonski,CHIO Rennen Gmbh,95 Roermonderstrasse,52070,+496348952174,emma.sch@chio-ac.de,DE256976784842975,1,672

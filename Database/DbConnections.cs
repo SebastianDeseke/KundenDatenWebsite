@@ -66,14 +66,51 @@ public class DbConnection
         MySqlCommand command = new MySqlCommand(SQLquery, connection);
 
         // Set the parameter values for your query
-        
+
         command.Parameters.AddWithValue("@UpdateValue", UpdateValue);
         command.Parameters.AddWithValue("@KundenID", KundenID);
         // Execute the query
         command.ExecuteNonQuery();
         command.Dispose();
         Disconnect();
-	}
+    }
+
+    public Dictionary<string,string> ReadCustomer(string KundeID)
+    {
+        string SQLquery = @"SELECT * FROM kundendaten WHERE KundenID = @KundenID";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(SQLquery, connection);
+
+        // Execute the query
+        command.Parameters.AddWithValue("@KundenID", KundeID);
+        MySqlDataReader reader = command.ExecuteReader();
+        var Customer = new Dictionary<string, string>();
+
+        while (reader.Read())
+        {
+            //Add requires me to know if the Key already exists
+            //Customer.Add("KundenID", reader["KundenID"].ToString());
+            //If the key already exists it, will overwrite the value, otherwise it will create it
+            Customer["KundenID"] = reader["KundenID"].ToString();
+            Customer["AnsprechTitle"] = reader["AnsprechTitle"].ToString();
+            Customer["AnsprechVorname"] = reader["AnsprechVorname"].ToString();
+            Customer["AnsprechNachname"] = reader["AnsprechNachname"].ToString();
+            Customer["Firmenname"] = reader["Firmenname"].ToString();
+            Customer["Adresse"] = reader["Adresse"].ToString();
+            Customer["Postleizahl"] = reader["Postleizahl"].ToString();
+            Customer["Telefonnummer"] = reader["Telefonnummer"].ToString();
+            Customer["Email"] = reader["Email"].ToString();
+            Customer["Umsatzsteuernummer"] = reader["Umsatzsteuernummer"].ToString();
+            Customer["PreisKategorie"] = reader["PreisKategorie"].ToString();
+        }
+
+        reader.Close();
+
+        command.Dispose();
+        Disconnect();
+        return Customer;
+    }
 
     public void DeleteCustomer(string KundenID)
     {
@@ -89,7 +126,8 @@ public class DbConnection
         Disconnect();
     }
 
-    public void CreateDemoCustomer (string DemoKundenname, string DemoKundenTitle, string DemoKundenadresse, string DemoKundenemail, string DemoKundenTelefonnummer, string DemoKundenGeburtsdatum, DateTime startTime, string DemoKundenID) {
+    public void CreateDemoCustomer(string DemoKundenname, string DemoKundenTitle, string DemoKundenadresse, string DemoKundenemail, string DemoKundenTelefonnummer, string DemoKundenGeburtsdatum, DateTime startTime, string DemoKundenID)
+    {
         //Same as Customer, just diffrent information
         //Aslo startdate, to determine if and when it should be deleted
         string sqlQuery = @"INSERT INTO 

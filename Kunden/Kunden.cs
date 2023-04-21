@@ -4,7 +4,7 @@ namespace KundenDatenWebsite.Database;
 public class KundenDaten
 {
 
-    string Vorname;
+    public string Vorname;
     string Nachname;
     string Firmenname;
     int Kundennummer;
@@ -209,5 +209,5 @@ public class KundenDaten
             }
         }
     }
-    
+
 }

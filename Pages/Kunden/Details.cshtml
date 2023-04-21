@@ -1,0 +1,18 @@
+﻿@page "/Kunden/Details/{KundeID}"
+@model DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>@Model.Title </br>
+    @Model.Vorname </br>
+    @Model.Nachname </br>
+    @Model.Firmenname </br>
+    @Model.Adresse </br>
+    @Model.Postleizahl </br>
+    @Model.Telefonnummer </br>
+    @Model.Email </br>
+    @Model.Umsatzsteuernummer </br>
+    @Model.PreisKategorie </br>
+</p>

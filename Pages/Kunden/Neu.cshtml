@@ -1,4 +1,4 @@
-﻿@page 
+﻿@page
 @model NeuModel
 @{
     ViewData["Title"] = "Neu Kunde";
@@ -7,5 +7,14 @@
 
 <p>Nothing</p>
 
-<button type="button" class="btn btn-primary">Details Page</button>
+
+<form method="post" asp-page-handler="/Kunden/Neu">
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Bitte geben Sie Ihre Kunden ID ein</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Deine Kunden ID hier eingeben" name="KundenID">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Details Page</button>
+    <br /><br />
+</form>
 

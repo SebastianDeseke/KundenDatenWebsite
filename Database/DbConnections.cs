@@ -91,7 +91,7 @@ public class DbConnection
         {
             //Add requires me to know if the Key already exists
             //Customer.Add("KundenID", reader["KundenID"].ToString());
-            //If the key already exists it, will overwrite the value, otherwise it will create it
+            //If the key already exists, it will overwrite the value, otherwise it will create it
             Customer["KundenID"] = reader["KundenID"].ToString();
             Customer["AnsprechTitle"] = reader["AnsprechTitle"].ToString();
             Customer["AnsprechVorname"] = reader["AnsprechVorname"].ToString();

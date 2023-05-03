@@ -6,6 +6,8 @@ namespace KundenDatenWebsite.Pages.Kunden;
 public class NeuModel : PageModel
 {
     private readonly ILogger<NeuModel> _logger;
+    
+    public string KundenID {get; set;}
 
 
     public NeuModel(ILogger<NeuModel> logger)
@@ -16,11 +18,12 @@ public class NeuModel : PageModel
     public void OnGet()
     {
 
-
     }
 
     public void OnPost()
     {
-        Response.Redirect("/Kunden/Details?KundeID=1");
+        //have to catch the Id that is inputed in the form
+        KundenID = Request.Form["KundenID"];
+        Response.Redirect($"/Kunden/Details/{KundenID}");
     }
 }

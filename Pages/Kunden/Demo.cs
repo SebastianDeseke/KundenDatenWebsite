@@ -8,13 +8,18 @@ public class DemoModel : PageModel
     private readonly ILogger<DemoModel> _logger;
 
     public string KundenID { get; set; }
+    private readonly DbConnection _db;
+    private readonly DemoKunden _demo;
 
-    public DemoModel (ILogger<DemoModel> logger)
+    public DemoModel(ILogger<DemoModel> logger, DbConnection db)
     {
         _logger = logger;
+        _demo = new DemoKunden();
+        _db = db;
     }
 
-    public DateTime determinStartTime ()
+
+    public DateTime determinStartTime()
     {
         DateTime startTime = DateTime.Now;
         return startTime;
@@ -29,9 +34,7 @@ public class DemoModel : PageModel
     {
         //Take the information that is inputed in the form
         //and save it in the database
-        DbConnection db = new DbConnection();
-        DemoKunden demo = new DemoKunden();
-        db.CreateDemoCustomer( Request.Form["Vorname"], Request.Form["Nachname"],Request.Form["Title"], Request.Form["Adresse"], Request.Form["Email"],  Request.Form["Telefonnummer"], Request.Form["Geburtsdatum"], determinStartTime(), demo.GenerateDemoID());
+        _db.CreateDemoCustomer(Request.Form["Vorname"], Request.Form["Nachname"], Request.Form["Title"], Request.Form["Adresse"], Request.Form["Email"], Request.Form["Telefonnummer"], Request.Form["Geburtsdatum"], determinStartTime(), _demo.GenerateDemoID());
 
     }
 }

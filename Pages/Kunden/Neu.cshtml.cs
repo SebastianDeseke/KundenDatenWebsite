@@ -8,11 +8,15 @@ public class NeuModel : PageModel
     private readonly ILogger<NeuModel> _logger;
 
     public string KundenID { get; set; }
+    private readonly DbConnection _db;
+    private readonly KundenErstellen _kunde;
 
 
-    public NeuModel(ILogger<NeuModel> logger)
+    public NeuModel(ILogger<NeuModel> logger, DbConnection db)
     {
         _logger = logger;
+        _db = db;
+        _kunde = new KundenErstellen();
     }
 
     public int convertPreiskategory(string Land)
@@ -49,9 +53,7 @@ public class NeuModel : PageModel
     {
         //Take the information that is inputed in the form
         //and save it in the database
-        DbConnection db = new DbConnection();
-        KundenErstellen newkunde = new KundenErstellen();
-        db.CreateCustomer(newkunde.KundenummerGenerieren(), Request.Form["Title"], Request.Form["Vorname"], Request.Form["Nachname"], Request.Form["Firmenname"], Request.Form["Adresse"], Request.Form["Postleizahl"], Request.Form["Telefonnummer"], Request.Form["Email"], Request.Form["Umsatzsteuernummer"], convertPreiskategory(Request.Form["Land"]));
+        _db.CreateCustomer(_kunde.KundenummerGenerieren(), Request.Form["Title"], Request.Form["Vorname"], Request.Form["Nachname"], Request.Form["Firmenname"], Request.Form["Adresse"], Request.Form["Postleizahl"], Request.Form["Telefonnummer"], Request.Form["Email"], Request.Form["Umsatzsteuernummer"], convertPreiskategory(Request.Form["Land"]));
 
     }
 }

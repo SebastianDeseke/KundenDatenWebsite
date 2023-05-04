@@ -126,7 +126,7 @@ public class DbConnection
         Disconnect();
     }
 
-    public void CreateDemoCustomer(string DemoKundenname, string DemoKundenTitle, string DemoKundenadresse, string DemoKundenemail, string DemoKundenTelefonnummer, string DemoKundenGeburtsdatum, DateTime startTime, string DemoKundenID)
+    public void CreateDemoCustomer(string DemoKundenVorname, string DemoKundenName, string DemoKundenTitle, string DemoKundenadresse, string DemoKundenemail, string DemoKundenTelefonnummer, string DemoKundenGeburtsdatum, DateTime startTime, string DemoKundenID)
     {
         //Same as Customer, just diffrent information
         //Aslo startdate, to determine if and when it should be deleted
@@ -140,7 +140,8 @@ public class DbConnection
 
         // Set the parameter values for your query
         command.Parameters.AddWithValue("@Value0", DemoKundenID);
-        command.Parameters.AddWithValue("@Value1", DemoKundenname);
+        command.Parameters.AddWithValue("@Value1", DemoKundenVorname);
+        command.Parameters.AddWithValue("@Value1", DemoKundenName);
         command.Parameters.AddWithValue("@Value2", DemoKundenTitle);
         command.Parameters.AddWithValue("@Value3", DemoKundenadresse);
         command.Parameters.AddWithValue("@Value4", DemoKundenemail);

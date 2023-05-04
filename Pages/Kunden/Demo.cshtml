@@ -1,19 +1,13 @@
 ﻿@page
-@model NeuModel
+@model DemoModel
 @{
-    ViewData["Title"] = "Neu Kunde";
+    ViewData["Title"] = "Demo Kunden";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Nothing</p>
+<p>Für Demo Kunden</p>
 
-<form method="post" asp-page-handler="/Kunden/Neu">
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Title angeben: </label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Herr/Frau/Divers"
-            name="Title">
-    </div>
-
+<form method="post" asp-page-handler="/Kunden/Demo">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Vorname angeben </label>
         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Maksimilian" name="Vorname">
@@ -24,19 +18,14 @@
         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Musterman" name="Nachname">
     </div>
 
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Firmenname angeben</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Musterman GmbH" name="Firmenname">
+        <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title angeben: </label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Herr/Frau/Divers" name="Title">
     </div>
 
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Adresse angeben</label>
         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="123 Gmbostraße" name="Adresse">
-    </div>
-
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Postleizahl eingeben </label>
-        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="451655" name="Postleizahl">
     </div>
 
     <div class="mb-3">
@@ -49,9 +38,9 @@
         <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="Email">
     </div>
 
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Umsatzsteuernummer einfügen</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="DE1654894156412318978" name="Umsatzsteuernummer">
+        <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Geburtsdatum</label>
+        <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="01-01-1999" name="Geburtsdatum">
     </div>
 
     <div class="mb-3">
@@ -59,7 +48,10 @@
         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Deutschland" name="Land">
     </div>
 
-    <button class="btn btn-primary" type="submit">Button</button>
+</br>
+    <button class="btn btn-primary" type="submit">Hinzufügen</button>
 </form>
 
-</br></br></br></br>
+</br></br></br>
+
+Extra text

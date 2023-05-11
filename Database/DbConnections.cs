@@ -75,7 +75,7 @@ public class DbConnection
         Disconnect();
     }
 
-    public Dictionary<string,string> ReadCustomer(string KundeID)
+    public Dictionary<string, string> ReadCustomer(string KundeID)
     {
         string SQLquery = @"SELECT * FROM kundendaten WHERE KundenID = @KundenID";
 
@@ -124,6 +124,40 @@ public class DbConnection
         command.ExecuteNonQuery();
         command.Dispose();
         Disconnect();
+
+
+    }
+
+    public List<Dictionary<string, string>> GetAllCustomer()
+    {
+        string SQLquery = @"SELECT * FROM kundendaten";
+        Connect();
+        MySqlCommand command = new MySqlCommand(SQLquery, connection);
+        MySqlDataReader reader = command.ExecuteReader();
+        var CustomersList = new List<Dictionary<string, string>>();
+
+        while (reader.Read())
+        {
+            var customer = new Dictionary<string, string>();
+            customer["KundenID"] = reader["KundenID"].ToString();
+            customer["AnsprechTitle"] = reader["AnsprechTitle"].ToString();
+            customer["AnsprechVorname"] = reader["AnsprechVorname"].ToString();
+            customer["AnsprechNachname"] = reader["AnsprechNachname"].ToString();
+            customer["Firmenname"] = reader["Firmenname"].ToString();
+            customer["Adresse"] = reader["Adresse"].ToString();
+            customer["Postleizahl"] = reader["Postleizahl"].ToString();
+            customer["Telefonnummer"] = reader["Telefonnummer"].ToString();
+            customer["Email"] = reader["Email"].ToString();
+            customer["Umsatzsteuernummer"] = reader["Umsatzsteuernummer"].ToString();
+            CustomersList.Add(customer);
+        }
+        // Execute the query
+        reader.Close();
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
+
+        return CustomersList;
     }
 
     public void CreateDemoCustomer(string DemoKundenVorname, string DemoKundenName, string DemoKundenTitle, string DemoKundenadresse, string DemoKundenemail, string DemoKundenTelefonnummer, string DemoKundenGeburtsdatum, DateTime startTime, string DemoKundenID)

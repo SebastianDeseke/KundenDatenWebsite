@@ -3,3 +3,42 @@
 @{
     ViewData["Title"] = "Admin Overview";
 }
+<h1>@ViewData["Title"]</h1>
+
+<p>Listing all Database entries</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Kunden ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Vorname</th>
+            <th scope="col">Nachname</th>
+            <th scope="col">Frimenname</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Postleizahl</th>
+            <th scope="col">Telefonnummer</th>
+            <th scope="col">Email</th>
+            <th scope="col">Umsatzsteuernummer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>@customer["KundenID"]</td>
+                <td>@customer["AnsprechTitle"]</td>
+                <td>@customer["AnsprechVorname"]</td>
+                <td>@customer["AnsprechNachname"]</td>
+                <td>@customer["Firmenname"]</td>
+                <td>@customer["Adresse"]</td>
+                <td>@customer["Postleizahl"]</td>
+                <td>@customer["Telefonnummer"]</td>
+                <td>@customer["Email"]</td>
+                <td>@customer["Umsatzsteuernummer"]</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

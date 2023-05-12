@@ -188,7 +188,61 @@ public class DbConnection
         Disconnect();
     }
 
-    public void DeleteDemoCustomer(string DemoKundenID)
+    public List<Dictionary<string, string>> GetAllDemoCustomers()
+    {
+        string SQLquery = @"SELECT * FROM demokunden";
+        Connect();
+        MySqlCommand command = new MySqlCommand(SQLquery, connection);
+        MySqlDataReader reader = command.ExecuteReader();
+        var DemoCustomersList = new List<Dictionary<string, string>>();
+
+        while (reader.Read())
+        {
+            var customer = new Dictionary<string, string>();
+            customer["DemoKundeID"] = reader["DemoKundeID"].ToString();
+            customer["DemoKundenVorname"] = reader["DemoKundenVorname"].ToString();
+            customer["DemoKundenName"] = reader["DemoKundenName"].ToString();
+            customer["DemoKundenTitle"] = reader["DemoKundenTitle"].ToString();
+            customer["DemoKundenadresse"] = reader["DemoKundenadresse"].ToString();
+            customer["DemoKundenemail"] = reader["DemoKundenemail"].ToString();
+            customer["DemoKundenTelefonnummer"] = reader["DemoKundenTelefonnummer"].ToString();
+            customer["DemoKundenGeburtsdatum"] = reader["DemoKundenGeburtsdatum"].ToString();
+            customer["startTime"] = reader["startTime"].ToString();
+            DemoCustomersList.Add(customer);
+        }
+        // Execute the query
+        reader.Close();
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
+
+        return DemoCustomersList;
+
+    }
+
+    public void DeleteDemoCustomers()
+    {
+        //in Linux it is the chronjob, in windows it is the task scheduler
+        //since we have a small database, we can just use
+        //an sql query to delete the demo customers in an OnGet() method
+
+        //Another way of doing it, calculate
+        //DateTime in C# and then use it in the SQL query
+        //as a variable, shown below. This puts less load/strain on the database
+        DateTime lastDay = DateTime.Today.AddDays(-4);
+        string SQLquery2 = @$"DELETE FROM demokunden WHERE startTime < {lastDay}";
+        //But in the end, it is just a small database, so it doesn't matter
+        //thus just using INTERVAL will suffice and looks cool
+        string SQLquery = @"DELETE FROM demokunden WHERE startTime < CURDATE() - INTERVAL 3 DAY";
+        Connect();
+        MySqlCommand command = new MySqlCommand(SQLquery, connection);
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
+
+    }
+
+    public void DeleteSelectedDemoCustomer(string DemoKundenID)
     {
         string SQLquery = @$"DELETE FROM 
         demokunden WHERE DemoKundenID = {DemoKundenID}";

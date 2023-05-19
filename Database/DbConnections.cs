@@ -225,15 +225,17 @@ public class DbConnection
         //in Linux it is the chronjob, in windows it is the task scheduler
         //since we have a small database, we can just use
         //an sql query to delete the demo customers in an OnGet() method
+        //I am making it 1 Day more than it is suposed to be, because
+        //I want to show the Admin wich ones are expired
 
         //Another way of doing it, calculate
         //DateTime in C# and then use it in the SQL query
         //as a variable, shown below. This puts less load/strain on the database
-        DateTime lastDay = DateTime.Today.AddDays(-4);
+        DateTime lastDay = DateTime.Today.AddDays(-5);
         string SQLquery2 = @$"DELETE FROM demokunden WHERE startTime < {lastDay}";
         //But in the end, it is just a small database, so it doesn't matter
         //thus just using INTERVAL will suffice and looks cool
-        string SQLquery = @"DELETE FROM demokunden WHERE startTime < CURDATE() - INTERVAL 3 DAY";
+        string SQLquery = @"DELETE FROM demokunden WHERE startTime < CURDATE() - INTERVAL 4 DAY";
         Connect();
         MySqlCommand command = new MySqlCommand(SQLquery, connection);
         command.ExecuteNonQuery();

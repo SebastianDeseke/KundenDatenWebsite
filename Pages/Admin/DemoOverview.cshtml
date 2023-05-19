@@ -1,0 +1,50 @@
+@page
+@model DemoOverviewModel
+@{
+    ViewData["Title"] = "Admin Overview";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Listing all Database entries for Demo Customers. Also shows how long teir Acccount will be valid for</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Demo ID</th>
+            <th scope="col">Vorname</th>
+            <th scope="col">Nachname</th>
+            <th scope="col">Title</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefonnummer</th>
+            <th scope="col">Geburtsdatum</th>
+            <th scope="col">Gültigkeitsstatus</th>
+            <!-- Die Gültigkeit wird berechnet und hier angezeigt -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.DemoCustomers)
+        {
+            <tr>
+                <td>@customer["DemoKundeID"]</td>
+                <td>@customer["DemoKundenVorname"]</td>
+                <td>@customer["DemoKundenName"]</td>
+                <td>@customer["DemoKundenTitle"]</td>
+                <td>@customer["DemoKundenadresse"]</td>
+                <td>@customer["DemoKundenemail"]</td>
+                <td>@customer["DemoKundenTelefonnummer"]</td>
+                <td>@customer["DemoKundenGeburtsdatum"]</td>
+                @if (@Model.Gueltigkeitsstatus(customer) == true)
+                {
+                    <td>gültig</td>
+                }
+                else if (@Model.Gueltigkeitsstatus(customer) == false)
+                {
+                    <td>ungültig</td>
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -5,7 +5,7 @@ VALUES
 ('Erika', 'Mustermann', 'Musterweg 2', 'emuster@example.com', '0987654321', '02.02.1990', 'Frau', '2023-02-15', '104'),
 ('Hans', 'Schmidt', 'Schmidtstraße 3', 'hschmidt@example.com', '1122334455', '03.03.1975', 'Herr', '2023-02-15', '106'),
 ('Lisa', 'Meier', 'Meierweg 4', 'lmeier@example.com', '5566778899', '04.04.1985', 'Frau', '2023-02-15', '110'),
-('Peter', 'Müller', 'Müllerplatz 5', 'pmueller@example.com', '3344556677', '05.05.1995', 'Herr', '2023-05-15', '111');
+('Peter', 'Müller', 'Müllerplatz 5', 'pmueller@example.com', '3344556677', '05.05.1995', 'Herr', '2023-05-18', '111');
 
 INSERT INTO demokunden (DemoKundenVorname, DemoKundenname, DemoKundenadresse, DemoKundenemail, DemoKundenTelefonnummer, DemoKundenGeburtsdatum, DemoKundenTitle, startTime, DemoKundeID) 
 VALUES ('Laura', 'Miller', 'Millerstraße 1', 'lmiller@example.com', '0123456789', '1990-06-12', 'Frau', '2023-05-16 14:30:00', '105'),

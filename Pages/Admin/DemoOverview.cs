@@ -9,7 +9,7 @@ public class DemoOverviewModel : PageModel
     public string KundenID { get; set; }
     public List<Dictionary<string, string>> DemoCustomers { get; set; }
     private readonly DbConnection _db;
-    public Boolean status { get; set; }
+    public bool status { get; set; }
 
     public DemoOverviewModel(ILogger<DemoOverviewModel> logger, DbConnection db)
     {
@@ -17,7 +17,7 @@ public class DemoOverviewModel : PageModel
         _db = db;
     }
 
-    public Boolean Gueltigkeitsstatus(Dictionary<string, string> demo)
+    public bool Gueltigkeitsstatus(Dictionary<string, string> demo)
     {
         //runs through the startTime of every demo account
         //and determinse if it is still valid or not
@@ -36,8 +36,13 @@ public class DemoOverviewModel : PageModel
             {
                 status = true;
             }
-
+            
         return status;
+        // return (DateTime.Now > endTime)
+        //statement already returns a bool
+        //so if statement becomes redundent.
+        //only applies when if statement does
+        //not execute any code and we are only interested in the bool
     }
 
     public void OnGet()

@@ -34,11 +34,11 @@
                 <td>@customer["DemoKundenemail"]</td>
                 <td>@customer["DemoKundenTelefonnummer"]</td>
                 <td>@customer["DemoKundenGeburtsdatum"]</td>
-                @if (@Model.Gueltigkeitsstatus(customer) == true)
+                @if (@Model.Gueltigkeitsstatus(customer))
                 {
                     <td>gültig</td>
                 }
-                else if (@Model.Gueltigkeitsstatus(customer) == false)
+                else
                 {
                     <td>ungültig</td>
                 }

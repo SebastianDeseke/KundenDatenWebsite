@@ -203,7 +203,7 @@ public class DbConnection
             //Add requires me to know if the Key already exists
             //Customer.Add("KundenID", reader["KundenID"].ToString());
             //If the key already exists, it will overwrite the value, otherwise it will create it
-            DemoCustomer["DemoID"] = reader["DemoKundeID"].ToString();
+            DemoCustomer["DemoKundeID"] = reader["DemoKundeID"].ToString();
             DemoCustomer["DemoKundenVorname"] = reader["DemoKundenVorname"].ToString();
             DemoCustomer["DemoKundenName"] = reader["DemoKundenName"].ToString();
             DemoCustomer["DemoKundenTitle"] = reader["DemoKundenTitle"].ToString();
@@ -295,7 +295,7 @@ public class DbConnection
     {
         //for specific deletion of a demo customer
         string SQLquery = @$"DELETE FROM demokunden 
-        WHERE DemoKundenID = {DemoKundenID}";
+        WHERE DemoKundeID = {DemoKundenID}";
 
         Connect();
         MySqlCommand command = new MySqlCommand(SQLquery, connection);

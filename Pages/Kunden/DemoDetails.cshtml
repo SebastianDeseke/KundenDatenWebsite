@@ -1,0 +1,30 @@
+﻿@page "/Kunden/DemoDetails/{DemoKundenID}"
+@model DemoDetailsModel
+@{
+    ViewData["Title"] = "Demo Details";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Hier wird die Daten den Sie fürs Demo eingefüllt haben angezeigt</p>
+</br>
+
+<p>
+<h3>@Model.Title</br>
+        @Model.Vorname</br>
+        @Model.Nachname</br>
+        @Model.Adresse</br>
+        @Model.Telefonnummer</br>
+        @Model.Email</br>
+        @Model.Geburtsdatum</br>
+        @Model.startTime</br></h3>
+</p>
+
+</br></br></br>
+
+<form method="post" asp-page-handler="/Kunde/Details">
+    <div class="mb-3">
+        <button type="submit" class="btn btn-outline-danger">Profil Löschen</button>
+    </div>
+</form>
+
+

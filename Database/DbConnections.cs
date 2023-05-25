@@ -75,15 +75,14 @@ public class DbConnection
         Disconnect();
     }
 
-    public Dictionary<string, string> ReadCustomer(string KundeID)
+    public Dictionary<string, string> ReadCustomer(string KundenID)
     {
-        string SQLquery = @"SELECT * FROM kundendaten WHERE KundenID = @KundenID";
+        string SQLquery = @$"SELECT * FROM kundendaten WHERE KundenID = {KundenID}";
 
         Connect();
         MySqlCommand command = new MySqlCommand(SQLquery, connection);
 
         // Execute the query
-        command.Parameters.AddWithValue("@KundenID", KundeID);
         MySqlDataReader reader = command.ExecuteReader();
         var Customer = new Dictionary<string, string>();
 
@@ -186,6 +185,40 @@ public class DbConnection
         command.ExecuteNonQuery();
         command.Dispose();
         Disconnect();
+    }
+
+        public Dictionary<string, string> ReadDemoCustomer(string DemoKundenID)
+    {
+        string SQLquery = @$"SELECT * FROM demokunden WHERE DemoKundeID = {DemoKundenID}";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(SQLquery, connection);
+
+        // Execute the query
+        MySqlDataReader reader = command.ExecuteReader();
+        var DemoCustomer = new Dictionary<string, string>();
+
+        while (reader.Read())
+        {
+            //Add requires me to know if the Key already exists
+            //Customer.Add("KundenID", reader["KundenID"].ToString());
+            //If the key already exists, it will overwrite the value, otherwise it will create it
+            DemoCustomer["DemoID"] = reader["DemoKundeID"].ToString();
+            DemoCustomer["DemoKundenVorname"] = reader["DemoKundenVorname"].ToString();
+            DemoCustomer["DemoKundenName"] = reader["DemoKundenName"].ToString();
+            DemoCustomer["DemoKundenTitle"] = reader["DemoKundenTitle"].ToString();
+            DemoCustomer["DemoKundenadresse"] = reader["DemoKundenadresse"].ToString();
+            DemoCustomer["DemoKundenemail"] = reader["demoKundenemail"].ToString();
+            DemoCustomer["DemoKundenTelefonnummer"] = reader["DemoKundenTelefonnummer"].ToString();
+            DemoCustomer["DemoKundenGeburtsdatum"] = reader["DemoKundenGeburtsdatum"].ToString();
+            DemoCustomer["startTime"] = reader["startTime"].ToString();
+        }
+
+        reader.Close();
+
+        command.Dispose();
+        Disconnect();
+        return DemoCustomer;
     }
 
     public List<Dictionary<string, string>> GetAllDemoCustomers()

@@ -7,7 +7,7 @@ public class DemoModel : PageModel
 {
     private readonly ILogger<DemoModel> _logger;
 
-    public string KundenID { get; set; }
+    public string DemoKundenID { get; set; }
     private readonly DbConnection _db;
     private readonly DemoKunden _demo;
 
@@ -30,11 +30,16 @@ public class DemoModel : PageModel
 
     }
 
-    public void OnPost()
+    public void OnPostAdd()
     {
         //Take the information that is inputed in the form
         //and save it in the database
         _db.CreateDemoCustomer(Request.Form["Vorname"], Request.Form["Nachname"], Request.Form["Title"], Request.Form["Adresse"], Request.Form["Email"], Request.Form["Telefonnummer"], Request.Form["Geburtsdatum"], determinStartTime(), _demo.GenerateDemoID());
+    }
 
+    public void OnPostSearch()
+    {
+        DemoKundenID = Request.Form["DemoKundenID"];
+        Response.Redirect($"/Kunden/DemoDetails/{DemoKundenID}");
     }
 }

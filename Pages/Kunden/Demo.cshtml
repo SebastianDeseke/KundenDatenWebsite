@@ -6,8 +6,23 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>Für Demo Kunden</p>
+<br/>
 
-<form method="post" asp-page-handler="/Kunden/Demo">
+<p>Haben Sie eine Profil Demo bei uns? Geben Sie hier Ihre ID ein und Sie werden weitergeleitet</p>
+<form method="post" asp-page-handler="Search">
+    <div class="mb-3">
+        <label for="formGroupInput" class="form-label">Bitte geben Sie Ihre Demo ID ein</label>
+        <input type="text" class="form-control" id="formGroupInput" placeholder="Deine Demo ID hier eingeben"
+            name="DemoKundenID">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Search</button>
+    <br/><br/>
+</form>
+<br/>
+
+<p>Wenn Sie noch keine Demo ID haben, können Sie sich hier eine erstellen</p>
+<form method="post" asp-page-handler="Add">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Vorname angeben </label>
         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Maksimilian" name="Vorname">

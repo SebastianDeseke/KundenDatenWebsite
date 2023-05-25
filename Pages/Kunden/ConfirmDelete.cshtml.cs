@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace KundenDatenWebsite.Pages.Kunden;
 
-public class DetailsModel : PageModel
+public class DeleteModel : PageModel
 {
     [BindProperty(SupportsGet = true)]
     public string KundeID { get; set; }
-    private readonly ILogger<DetailsModel> _logger;
+    private readonly ILogger<DeleteModel> _logger;
     private readonly DbConnection _db;
     public string Title { get; set; }
     public string Vorname { get; set; }
@@ -20,8 +20,7 @@ public class DetailsModel : PageModel
     public string Umsatzsteuernummer { get; set; }
     public string PreisKategorie { get; set; }
 
-
-    public DetailsModel(ILogger<DetailsModel> logger, DbConnection db)
+    public DeleteModel(ILogger<DeleteModel> logger, DbConnection db)
     {
         _logger = logger;
         _db = db;
@@ -45,6 +44,7 @@ public class DetailsModel : PageModel
 
     public void OnPost()
     {
-        Response.Redirect($"/Kunden/ConfirmDelete/{KundeID}");
+        _db.DeleteCustomer(KundeID);
+        Response.Redirect("/Privacy");
     }
 }

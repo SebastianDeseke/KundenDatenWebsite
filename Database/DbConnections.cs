@@ -244,10 +244,25 @@ public class DbConnection
 
     }
 
+        public void DeleteSelectedCustomer (string KundenID){
+        //for specific deletion of a customer
+        string SQLquery = @$"DELETE FROM kundendaten
+        WHERE KundenID = {KundenID}";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(SQLquery, connection);
+
+        // Execute the query
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
+    }
+
     public void DeleteSelectedDemoCustomer(string DemoKundenID)
     {
-        string SQLquery = @$"DELETE FROM 
-        demokunden WHERE DemoKundenID = {DemoKundenID}";
+        //for specific deletion of a demo customer
+        string SQLquery = @$"DELETE FROM demokunden 
+        WHERE DemoKundenID = {DemoKundenID}";
 
         Connect();
         MySqlCommand command = new MySqlCommand(SQLquery, connection);
